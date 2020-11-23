@@ -3,7 +3,7 @@ const db = require('../db-connection');
 const controllers = {
   getAll: (req, res) => {
 
-    const sql = `SELECT * FROM playlists`;
+    const sql = `SELECT * FROM genre`;
 
     db.all(sql, (err, rows) => {
       if (err) {
@@ -16,7 +16,7 @@ const controllers = {
   },
   getOne: (req, res) => { 
     const id = Number(req.params.id);
-    const sql= `SELECT * FROM Genre WHERE GenreId = ${id}`
+    const sql= `SELECT * FROM genre WHERE GenreId = ${id}`
     db.all(sql, (err, rows) => {
       if (err) {
         res.status(400).json({ "error": err.message });
