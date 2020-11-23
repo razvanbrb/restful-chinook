@@ -15,7 +15,7 @@ const controllers = {
     });
   },
   getOne: (req, res) => {
-    const sql = `select * from artist where ArtistId = ${req.params.id}`;
+    const sql = `select * from artists where ArtistId = ${req.params.id}`;
     db.get (sql,(err,rows) =>{
       if (err) {
         res.status(400).json({"error":err.message});
