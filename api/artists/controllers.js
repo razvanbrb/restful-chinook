@@ -30,18 +30,16 @@ const controllers = {
     if (!req.body.Name) {
       errors.push("No name of the artist specified");
     }
-    if (!req.body.ArtistID) {
-      errors.push("No ArtistId specified");
-    }
+    
     if (errors.length) {
       res.status(400).json({"error":errors.join(",")});
       return;
     }
     const data ={
       name: req.body.Name,
-      artistId: Number(req.body.ArtistID)
+     
     }
-    const sql = `INSERT INTO albums ( ArtistId, Name) VALUES( "${data.artistId}", "${data.name}")`;
+    const sql = `INSERT INTO artists (Name) VALUES("${data.name}")`;
     db.run(sql,function(err, msg = "This artist has been created"){
       if (err) {
         res.status(400).json({ "error": err.message });
@@ -58,10 +56,10 @@ const controllers = {
     // read row data from body
     const data={
       name: req.body.Name ? `'${req.body.Name}'`:null,
-      artistId: req.body.ArtistID? Number(req.body.ArtistID):null
+      
     }
 
-    const sql = `update artist set Name = COALESCE(${data.name}, Name), ArtistId = COALESCE(${data.artistId}, ArtistID) where ArtistId = ${req.params.id}`;
+    const sql = `update artists set Name = COALESCE(${data.name}, Name) where ArtistId = ${req.params.id}`;
     db.run(sql, function(err,msg="This artist has been updated"){
       if (err) {
         res.status(400).json({"error":err.message});
@@ -74,7 +72,7 @@ const controllers = {
     });
   },
   delete: (req, res) => {
-    const sql = `delete from artist where ArtistId = ${req.params.id}`;
+    const sql = `delete from artists where ArtistId = ${req.params.id}`;
     db.run(sql, function (err, msg="This artist has been deleted") {
       if (err) {
         res.status(400).json({ "error": err.message });
