@@ -3,7 +3,7 @@ const db = require('../db-connection');
 const controllers = {
   getAll: (req, res) => {
 
-    const sql = `SELECT * FROM albums`;
+    const sql = `SELECT title AS Album, artists.Name AS Artist, artists.ArtistId as ArtistId, albums.AlbumId as AlbumId, tracks.Name AS Tracks FROM albums LEFT JOIN artists USING(ArtistId) LEFT JOIN tracks ON albums.AlbumId = tracks.AlbumId `;
 
     db.all(sql, (err, rows) => {
       if (err) {
@@ -14,6 +14,9 @@ const controllers = {
       res.json(rows)
     });
   },
+
+  
+
   getOne: (req, res) => { 
     const sql = `select * from albums where AlbumId = ${req.params.id}`;
     db.get(sql,(err, rows)=>{
@@ -25,6 +28,7 @@ const controllers = {
       res.json(rows);
     })
   },
+
   create: (req, res) => {
     // read row data from body
 

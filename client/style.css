@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Ovo&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nerko+One&display=swap');
 /* Reset */
 
 * {
@@ -12,12 +13,13 @@ body {
   background: #f1f1f1;
   position: relative;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .tabs {
   margin: auto;
   max-width:1200px;
-  min-height:500px;
+  height:auto;
   background:#f5f5f5;
   padding:20px 30px;
 }
@@ -54,17 +56,17 @@ body {
 }
 .tabs .tab-body {
   position:relative;
-  height:calc(100% - 60px);
+  height:calc(160% - 60px);
   padding:10px 5px;
 }
 .tabs .tab-body > div {
   position:absolute;
-  top:-800%;
+  left:-1000%;
   opacity:0;
   padding: 30px;
   width: 100%;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   margin: auto;
   transform:scale(0.9);
@@ -72,7 +74,244 @@ body {
     transform 500ms ease-in-out 0ms;
 }
 .tabs .tab-body > div.active {
-  top:0px;
+  left:0px;
   opacity:1;
   transform:scale(1);
 }
+
+
+
+/* Albums */
+.albums-body{
+  display: flex;
+  width: 100%;
+  min-height: 80vh;
+  flex-direction: column;
+  background-color: #c70f2a;
+  color: #fff;
+}
+
+.hide{
+  display: none;
+}
+.cover{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+img{
+  width: 600px;
+  margin: auto;
+  height: auto;
+  border-radius: 8px 100px;
+  box-shadow:  5px 5px 10px #8d0b1e, 
+             -5px -5px 10px #ff1336;
+}
+label{
+  font-family: 'Nerko One', cursive;
+  font-size: 32px;
+}
+
+.albums{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  width: 100%;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+.grid{
+  text-align: center;
+  width: 100%;
+}
+
+.btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-family: 'Nerko One', cursive;
+  width: fit-content;
+  height: 50px;
+  padding: 4px 8px;
+  background-color: #f1f1f1;
+  color: #c70f2a;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  box-shadow:  5px 5px 10px #8d0b1e, 
+             -5px -5px 10px #e61131;
+  margin-bottom: 30px;
+
+}
+summary{
+  outline: none;
+  margin: 0 auto;
+}
+.summary{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-family: 'Nerko One', cursive;
+  width: fit-content;
+  height: 50px;
+  padding: 4px 8px;
+  color:#f1f1f1;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  box-shadow:  5px 5px 10px #8d0b1e, 
+             -5px -5px 10px #e61131;
+  margin-bottom: 30px;
+}
+
+details summary::-webkit-details-marker {
+  display:none;
+}
+details[open] summary ~ * {
+  animation: sweep .5s ease-in-out;
+}
+
+@keyframes sweep {
+  0%    {opacity: 0; margin-left: -10px}
+  100%  {opacity: 1; margin-left: 0px}
+}
+
+.search-input{
+  display: flex;
+  width: 100%;
+  margin-bottom: 30px;
+}
+#lname{
+  font-size: 16px;
+  width: 90%;
+  border: none;
+  outline: none;
+  padding-left: 10px;
+  border-radius: 8px;
+  background: #f1f1f1;
+  box-shadow: inset 5px 5px 5px #c8c8c8, 
+            inset -5px -5px 5px #ffffff;
+}
+.search-bar{
+  font-size: 16px;
+  margin-left: 5px;
+  border: none;
+  outline: none;
+  padding: 0 5px;
+  border-radius: 8px;
+  background:#c70f2a;
+  box-shadow:  3px 3px 7px #8d0b1e, 
+             -3px -3px 7px #e61131;
+  color: #f1f1f1;
+  font-family: 'Nerko One', cursive;
+}
+
+#searchMatch{
+  font-size: 16px;
+  height: 35px;
+  width: 70%;
+  border: none;
+  outline: none;
+  padding-left: 10px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  background: #f1f1f1;
+  box-shadow: inset 5px 5px 5px #c8c8c8, 
+            inset -5px -5px 5px #ffffff;
+}
+
+li {
+  list-style: none;
+  font-family: 'Nerko One', cursive;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  color: #c70f2a;
+  border-radius: 4px;
+  background: #f1f1f1;
+  box-shadow: inset 5px 5px 5px #a6a6a6, 
+            inset -5px -5px 5px #ffffff;
+  margin-bottom: 10px;
+  padding: 7px;
+}
+
+.editBtn, .deleteBtn{
+  color: #c70f2a;
+  border: none;
+  outline: none;
+  margin: 20px 10px 5px 10px;
+  font-size: 18px;
+}
+.summary-tracks{
+  color: #e9aa16;
+  font-weight: 900;
+}
+
+.create{
+  font-family: 'Nerko One', cursive;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #c70f2a;
+  border-radius: 4px;
+  background: #f1f1f1;
+  box-shadow: inset 5px 5px 5px #a6a6a6, 
+            inset -5px -5px 5px #ffffff;
+  margin-bottom: 10px;
+  padding: 12px;
+}
+
+.name, .artist{
+  font-size: 22px;
+  color: #e9aa16;
+}
+
+#name, #artist{
+  font-size: 16px;
+  height: 35px;
+  width: 70%;
+  border: none;
+  outline: none;
+  padding-left: 10px;
+  border-radius: 8px;
+  background: #f1f1f1;
+  box-shadow: inset 5px 5px 5px #c8c8c8, 
+            inset -5px -5px 5px #ffffff;
+}
+
+select#artist{
+  color: rgb(112, 110, 110);
+}
+
+.save-btn{
+  background: #c70f2a;
+  color: white;
+  font-size: 18px;
+  font-family: 'Nerko One', cursive;
+  width: fit-content;
+  padding: 4px 8px;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  box-shadow:  5px 5px 10px #969595, 
+             -5px -5px 10px #ffffff;
+  margin-bottom: 20px;
+}
+.error{
+  color: #c70f2a;
+  margin-bottom: 10px;
+  display: none;
+}
+.save{
+  color: #e9aa16;
+  margin-bottom: 10px;
+  display: none;
+}
+

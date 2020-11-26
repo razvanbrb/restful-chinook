@@ -4,8 +4,12 @@
 <head>
   <meta charset="utf-8" />
   <title>courses web-app</title>
-
+  <script src="https://kit.fontawesome.com/1f1918c2d9.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="./style.css">
+  <script type="module">
+    import { albumsInit } from './app/init.js'
+    window.onload = albumsInit;
+  </script>
 
 </head>
 
@@ -21,9 +25,46 @@
     </div>
     <div class="tab-indicator"></div>
     <div class="tab-body">
-      <div class="active">
-        <h2>Albums section</h2>
-      </div>
+      <div class="active albums-body">
+        <div class="cover">
+          <img src="./pexels-sound-on-3756774.jpg" alt="concert">
+        </div>
+        <div class="albums">
+          <div class="grid">
+            <details>
+              <summary class="summary">VIEW ALL ALBUMS</summary>
+              <input type="text" id="searchMatch" placeholder="Search for album..">
+              <div id="getAllalbums"></div>
+            </details>
+          </div>
+          <div class="grid">
+            <form id="search">
+              <label for="lname">SEARCH FOR ALBUM OR ARTIST</label><br>
+              <div class="search-input">
+                <input type="text" id="lname" name="lname" placeholder="Search..."><br><br>
+              <input type="submit" class="search-bar">
+              </div>
+            </form>
+            <div class="albums-list"></div>
+          </div>
+          <div class="grid">
+            <details id="album-form">
+              <summary class="btn">Create New Album</summary>
+              <form action="" class='create' id="create">
+                <label for="artist" class="artist">Artist</label><br>
+                <select id="artist" name="artist">
+                  <option value="0">Select Artist</option>
+                </select><br><br>
+                <label for="name" class='name'>Name of the Album</label><br>
+                <input type="text" id="name" name="name" placeholder="Name..."><br><br>
+                <p class="error">Please fill all fields</p>
+                <p class="save">Your album has been saved</p>
+                <input type="submit" value="SAVE" class="save-btn">  
+              </form>
+            </details>
+          </div>
+          </div>
+        </div>
       <div>
         <h2>Artist section</h2>
       </div>
